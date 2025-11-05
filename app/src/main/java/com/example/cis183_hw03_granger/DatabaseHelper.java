@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         //it accepts: the context, the name of the database, factory (leave null), and version number
         //if the database becomes corrupt or the information in the database is wrong change the version number
         //super is used to call the functionality of the base class SQLiteOpenHelper and then executes the extended (DatabaseHelper)
-        super(c, database_name,null,1);
+        super(c, database_name,null,3);
     }
     //this is called when a new database
     @Override
@@ -30,8 +30,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
         //create table in the database
         //execute the sql statement on the database that was passed to the function called db
         //this can be tricky because we have to write sql statements as strings
-        db.execSQL("CREATE TABLE " + students_table_name + " (studentId integer primary key autoincrement not null, fname varchar(50), lname varchar(50), email varchar(50), age integer, gpa double, major varchar(50));");
-        db.execSQL("CREATE TABLE " + majors_table_name + " (majorId integer primary key autoincrement not null, studentId integer, majorName varchar(50), majorPrefix varchar(50), foreign key (studentId) references " + students_table_name + " (studentId));");
+        db.execSQL("CREATE TABLE " + students_table_name + " (username varchar(50) primary key not null, fname varchar(50), lname varchar(50), email varchar(50), age integer, gpa double, major varchar(50));");
+        db.execSQL("CREATE TABLE " + majors_table_name + " (majorId integer primary key autoincrement not null, username varchar(50), majorName varchar(50), majorPrefix varchar(50), foreign key (username) references " + students_table_name + " (username));");
     }
 
     //this is called when a new database version is created
@@ -67,10 +67,10 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
             //add dummy data to database
             // (studentId integer primary key autoincrement not null, fname varchar(50), lname varchar(50), email varchar(50), age integer, gpa double, major varchar(50));");
-            db.execSQL("INSERT INTO " + students_table_name + " (fname, lname, email, age, gpa, major) VALUES ('Granger', 'Vaughan', 'Gray@gmail.com', '21', '3.0', 'Computer Science');");
-            db.execSQL("INSERT INTO " + students_table_name + " (fname, lname, email, age, gpa, major) VALUES ('Alex', 'Vaughan', 'ACharles@gmail.com', '15', '2.1', 'Biology');");
-            db.execSQL("INSERT INTO " + students_table_name + " (fname, lname, email, age, gpa, major) VALUES ('Caleb', 'Vaughan', 'DOneAthlete@gmail.com', '18', '3.4', 'Business');");
-            db.execSQL("INSERT INTO " + students_table_name + " (fname, lname, email, age, gpa, major) VALUES ('Brett', 'Brown', 'WavyB@gmail.com', '23', '3.2', 'Computer Science');");
+            db.execSQL("INSERT INTO " + students_table_name + " (username, fname, lname, email, age, gpa, major) VALUES ('GVaughan', 'Granger', 'Vaughan', 'Gray@gmail.com', '21', '3.0', 'Computer Science');");
+            db.execSQL("INSERT INTO " + students_table_name + " (username, fname, lname, email, age, gpa, major) VALUES ('AVaughan', 'Alex', 'Vaughan', 'ACharles@gmail.com', '15', '2.1', 'Biology');");
+            db.execSQL("INSERT INTO " + students_table_name + " (username, fname, lname, email, age, gpa, major) VALUES ('CVaughan', 'Caleb', 'Vaughan', 'DOneAthlete@gmail.com', '18', '3.4', 'Business');");
+            db.execSQL("INSERT INTO " + students_table_name + " (username, fname, lname, email, age, gpa, major) VALUES ('BBrown', 'Brett', 'Brown', 'WavyB@gmail.com', '23', '3.2', 'Computer Science');");
 
             //close the database
             db.close();
@@ -84,10 +84,10 @@ public class DatabaseHelper extends SQLiteOpenHelper
             SQLiteDatabase db = this.getWritableDatabase();
 
             //(majorId integer primary key autoincrement not null, studentId integer, majorName varchar(50), majorPrefix varchar(50)
-            db.execSQL("INSERT INTO " + majors_table_name + " (studentId, majorName, majorPrefix) VALUES (1, 'Computer Science', 'CIS');");
-            db.execSQL("INSERT INTO " + majors_table_name + " (studentId, majorName, majorPrefix) VALUES (2, 'Biology', 'BIOL');");
-            db.execSQL("INSERT INTO " + majors_table_name + " (studentId, majorName, majorPrefix) VALUES (3, 'Business', 'BUS');");
-            db.execSQL("INSERT INTO " + majors_table_name + " (studentId, majorName, majorPrefix) VALUES (4, 'Computer Science', 'CIS');");
+            db.execSQL("INSERT INTO " + majors_table_name + " (username, majorName, majorPrefix) VALUES ('GVaughan', 'Computer Science', 'CIS');");
+            db.execSQL("INSERT INTO " + majors_table_name + " (username, majorName, majorPrefix) VALUES ('AVaughan', 'Biology', 'BIOL');");
+            db.execSQL("INSERT INTO " + majors_table_name + " (username, majorName, majorPrefix) VALUES ('CVaughan', 'Business', 'BUS');");
+            db.execSQL("INSERT INTO " + majors_table_name + " (username, majorName, majorPrefix) VALUES ('BBrown', 'Computer Science', 'CIS');");
 
             db.close();
         }
@@ -151,5 +151,22 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     }
 
+
+    //need a SQL statement to update data in database
+    //UPDATE students_table_name SET fname = '', lname = '', etc, etc WHERE username = (the username)
+
+    //username, fname, lname, email, age, gpa, major
+    public void updateStudentInfo(String username, String firstname, String lastname, String email, String age, String gpa, String major)
+    {
+        //we will get passed everything from the edit texts in the details page
+        //we then want to update all info where the username matches
+
+        String selectStatement = "UPDATE " + students_table_name + " SET fname = '" + firstname + "', lname = '" + lastname + "', email = '" + email + "', age = '" + age + "', gpa = '" + gpa + "', major = '" + major + "' WHERE username = '" + username + "';";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(selectStatement);
+
+        db.close();
+    }
 
 }

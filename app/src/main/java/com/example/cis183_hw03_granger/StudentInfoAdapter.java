@@ -54,9 +54,9 @@ public class StudentInfoAdapter extends BaseAdapter
 
         StudentInfo student = students.get(position);
 
-            tv_j_fname.setText("Name: " + student.getFname() + " " + student.getLname());
+            tv_j_fname.setText("" + student.getFname() + " " + student.getLname());
             //tv_j_lname.setText(student.getLname());
-            tv_j_id.setText("ID: " + student.getId());
+            tv_j_id.setText("" + student.getId());
             //tv_j_email.setText("Email: " + student.getEmail());
             //tv_j_age.setText("Age: " + student.getAge());
             //tv_j_gpa.setText("GPA: " + student.getGpa());

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CIS183_HW03_Granger">
         <activity
+            android:name=".AddStudentPage"
+            android:exported="false" />
+        <activity
             android:name=".StudentDetailsPage"
             android:exported="false" />
         <activity

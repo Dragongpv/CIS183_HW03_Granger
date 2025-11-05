@@ -39,12 +39,12 @@ public class StudentDetailsPage extends AppCompatActivity {
         });
 
         tv_j_id = findViewById(R.id.tv_v_details_id);
-        et_j_fname = findViewById(R.id.et_v_details_fname);
-        et_j_lname = findViewById(R.id.et_v_details_lname);
-        et_j_email = findViewById(R.id.et_v_details_email);
-        et_j_age = findViewById(R.id.et_v_details_age);
-        et_j_gpa = findViewById(R.id.et_v_details_gpa);
-        et_j_major = findViewById(R.id.et_v_details_major);
+        et_j_fname = findViewById(R.id.et_v_addStudent_fname);
+        et_j_lname = findViewById(R.id.et_v_addStudent_lname);
+        et_j_email = findViewById(R.id.et_v_addStudent_email);
+        et_j_age = findViewById(R.id.et_v_addStudent_age);
+        et_j_gpa = findViewById(R.id.et_v_addStudent_gpa);
+        et_j_major = findViewById(R.id.et_v_addStudent_major);
         btn_j_back = findViewById(R.id.btn_v_details_back);
         btn_j_update = findViewById(R.id.btn_v_details_update);
         dbHelper = new DatabaseHelper(this);
@@ -73,11 +73,16 @@ public class StudentDetailsPage extends AppCompatActivity {
             }
         });
 
+
+
         btn_j_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
+                dbHelper.updateStudentInfo(tv_j_id.getText().toString(), et_j_fname.getText().toString(), et_j_lname.getText().toString(), et_j_email.getText().toString(), et_j_age.getText().toString(), et_j_gpa.getText().toString(), et_j_major.getText().toString());
 
+                Intent intent = new Intent(StudentDetailsPage.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

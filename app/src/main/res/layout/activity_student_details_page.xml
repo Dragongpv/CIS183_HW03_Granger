@@ -21,11 +21,11 @@
         android:id="@+id/tv_v_details_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="5dp"
         android:text="id"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/textView6" />
+        app:layout_constraintBottom_toTopOf="@+id/et_v_addStudent_fname"
+        app:layout_constraintStart_toEndOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView6"
@@ -33,9 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:layout_marginTop="41dp"
-        android:layout_marginEnd="9dp"
         android:text="First Name:"
-        app:layout_constraintEnd_toStartOf="@+id/et_v_details_fname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,10 +42,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
-        android:layout_marginEnd="10dp"
         android:text="Last Name:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_details_lname"
-        app:layout_constraintEnd_toStartOf="@+id/et_v_details_lname"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_addStudent_lname"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -56,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
         android:text="Age:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_details_age"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_addStudent_age"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -65,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:text="GPA:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_details_gpa"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_addStudent_gpa"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -73,10 +69,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginEnd="36dp"
         android:text="Major:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_v_details_major" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/spinner"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
@@ -84,97 +81,83 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:text="Email:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_details_email"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_addStudent_email"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_v_details_fname"
+        android:id="@+id/et_v_addStudent_fname"
         android:layout_width="0dp"
         android:layout_height="49dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="28dp"
         android:ems="10"
         android:inputType="text"
         android:text="fname"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/tv_v_details_id" />
+        app:layout_constraintEnd_toEndOf="@+id/et_v_addStudent_lname"
+        app:layout_constraintStart_toStartOf="@+id/tv_v_details_id"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/et_v_details_lname"
+        android:id="@+id/et_v_addStudent_lname"
         android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginTop="105dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="108dp"
         android:ems="10"
         android:inputType="text"
         android:text="lname"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="@+id/et_v_addStudent_email"
+        app:layout_constraintStart_toStartOf="@+id/et_v_addStudent_email"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_v_details_email"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="74dp"
-        android:layout_marginBottom="68dp"
+        android:id="@+id/et_v_addStudent_email"
+        android:layout_width="311dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginBottom="137dp"
         android:ems="10"
         android:inputType="text"
         android:text="email"
-        app:layout_constraintBottom_toBottomOf="@+id/et_v_details_age"
-        app:layout_constraintEnd_toEndOf="@+id/et_v_details_age"
-        app:layout_constraintStart_toStartOf="@+id/et_v_details_age"
-        app:layout_constraintTop_toTopOf="@+id/et_v_details_lname" />
+        app:layout_constraintBottom_toBottomOf="@+id/et_v_addStudent_gpa"
+        app:layout_constraintEnd_toEndOf="@+id/et_v_addStudent_age"
+        app:layout_constraintStart_toStartOf="@+id/et_v_addStudent_age"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/et_v_details_age"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="247dp"
+        android:id="@+id/et_v_addStudent_age"
+        android:layout_width="306dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="69dp"
         android:ems="10"
         android:inputType="text"
         android:text="age"
-        app:layout_constraintEnd_toEndOf="@+id/et_v_details_gpa"
-        app:layout_constraintStart_toStartOf="@+id/et_v_details_gpa"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/et_v_addStudent_gpa"
+        app:layout_constraintEnd_toEndOf="@+id/et_v_addStudent_gpa"
+        app:layout_constraintStart_toStartOf="@+id/et_v_addStudent_gpa"
+        app:layout_constraintTop_toTopOf="@+id/et_v_addStudent_email" />
 
     <EditText
-        android:id="@+id/et_v_details_gpa"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginBottom="53dp"
+        android:id="@+id/et_v_addStudent_gpa"
+        android:layout_width="292dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
         android:ems="10"
         android:inputType="text"
         android:text="GPA"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="@+id/et_v_details_major"
-        app:layout_constraintStart_toStartOf="@+id/et_v_details_major"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
-
-    <EditText
-        android:id="@+id/et_v_details_major"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="293dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="major"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/et_v_details_lname"
-        app:layout_constraintStart_toStartOf="@+id/et_v_details_lname" />
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btn_v_details_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="25dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -183,10 +166,20 @@
         android:id="@+id/btn_v_details_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="30dp"
         android:text="Update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="308dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

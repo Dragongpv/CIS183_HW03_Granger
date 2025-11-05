@@ -4,17 +4,17 @@ public class StudentInfo
 {
     String fname;
     String lname;
-    String id;
+    String username;
     String email;
     String age;
     String gpa;
     String major;
 
-    public StudentInfo(String fname, String lname, String id, String email, String age, String gpa, String major)
+    public StudentInfo(String fname, String lname, String username, String email, String age, String gpa, String major)
     {
         this.fname = fname;
         this.lname = lname;
-        this.id = id;
+        this.username = username;
         this.email = email;
         this.age = age;
         this.gpa = gpa;
@@ -47,11 +47,11 @@ public class StudentInfo
     }
 
     public String getId() {
-        return id;
+        return username;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.username = username;
     }
 
     public String getEmail() {
