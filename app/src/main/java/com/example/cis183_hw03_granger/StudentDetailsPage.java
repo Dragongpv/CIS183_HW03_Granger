@@ -2,9 +2,12 @@ package com.example.cis183_hw03_granger;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
 
 public class StudentDetailsPage extends AppCompatActivity {
 
@@ -21,11 +26,12 @@ public class StudentDetailsPage extends AppCompatActivity {
     EditText et_j_email;
     EditText et_j_age;
     EditText et_j_gpa;
-    EditText et_j_major;
+    Spinner sp_j_majors;
     Button btn_j_back;
     Button btn_j_update;
     DatabaseHelper dbHelper;
     StudentInfo student;
+    ArrayList<MajorInfo> majors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +45,14 @@ public class StudentDetailsPage extends AppCompatActivity {
         });
 
         tv_j_id = findViewById(R.id.tv_v_details_id);
-        et_j_fname = findViewById(R.id.et_v_addStudent_fname);
-        et_j_lname = findViewById(R.id.et_v_addStudent_lname);
-        et_j_email = findViewById(R.id.et_v_addStudent_email);
-        et_j_age = findViewById(R.id.et_v_addStudent_age);
-        et_j_gpa = findViewById(R.id.et_v_addStudent_gpa);
-        et_j_major = findViewById(R.id.et_v_addStudent_major);
-        btn_j_back = findViewById(R.id.btn_v_details_back);
-        btn_j_update = findViewById(R.id.btn_v_details_update);
+        et_j_fname = findViewById(R.id.et_v_add_fname);
+        et_j_lname = findViewById(R.id.et_v_add_lname);
+        et_j_email = findViewById(R.id.et_v_add_email);
+        et_j_age = findViewById(R.id.et_v_add_age);
+        et_j_gpa = findViewById(R.id.et_v_add_gpa);
+        sp_j_majors = findViewById(R.id.sp_v_details_major);
+        btn_j_back = findViewById(R.id.btn_v_add_back);
+        btn_j_update = findViewById(R.id.btn_v_add_addStudent);
         dbHelper = new DatabaseHelper(this);
 
         student = DatabaseHelper.clickedStudent;
@@ -56,11 +62,26 @@ public class StudentDetailsPage extends AppCompatActivity {
         et_j_email.setText(student.getEmail());
         et_j_age.setText(student.getAge());
         et_j_gpa.setText(student.getGpa());
-        et_j_major.setText(student.getMajor());
+
 
         setButtonClicklisteners();
+        fillAdapterWithMajors();
 
     }
+
+    private void fillAdapterWithMajors()
+    {
+        majors = dbHelper.getDistinctMajors();
+        ArrayAdapter<MajorInfo> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,majors);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_j_majors.setAdapter(adapter);
+
+        //set the selected major to the one the student has
+        MajorInfo studentMajor = dbHelper.getStudentsMajor(tv_j_id.getText().toString());
+        Integer position = adapter.getPosition(studentMajor);
+        sp_j_majors.setSelection(position);
+    }
+
 
     private void setButtonClicklisteners()
     {
@@ -79,8 +100,12 @@ public class StudentDetailsPage extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                dbHelper.updateStudentInfo(tv_j_id.getText().toString(), et_j_fname.getText().toString(), et_j_lname.getText().toString(), et_j_email.getText().toString(), et_j_age.getText().toString(), et_j_gpa.getText().toString(), et_j_major.getText().toString());
+                MajorInfo selectedMajor = (MajorInfo) sp_j_majors.getSelectedItem();
+                dbHelper.updateStudentInfo(tv_j_id.getText().toString(), et_j_fname.getText().toString(), et_j_lname.getText().toString(), et_j_email.getText().toString(), et_j_age.getText().toString(), et_j_gpa.getText().toString(), Integer.parseInt(selectedMajor.getMajorId()));
 
+                Log.d("Major selected object", selectedMajor.toString());
+                Log.d("Major ID", selectedMajor.getMajorId());
+                Log.d("Major name from DB", dbHelper.findMajorNameGivenId(selectedMajor.getMajorId()));
                 Intent intent = new Intent(StudentDetailsPage.this, MainActivity.class);
                 startActivity(intent);
             }

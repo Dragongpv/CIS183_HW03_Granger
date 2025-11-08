@@ -24,7 +24,7 @@
         android:layout_marginStart="9dp"
         android:layout_marginBottom="5dp"
         android:text="id"
-        app:layout_constraintBottom_toTopOf="@+id/et_v_addStudent_fname"
+        app:layout_constraintBottom_toTopOf="@+id/et_v_add_fname"
         app:layout_constraintStart_toEndOf="@+id/textView6" />
 
     <TextView
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:text="Last Name:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_addStudent_lname"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_add_lname"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
         android:text="Age:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_addStudent_age"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_add_age"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:text="GPA:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_addStudent_gpa"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_add_gpa"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -71,8 +71,8 @@
         android:layout_marginStart="19dp"
         android:layout_marginEnd="36dp"
         android:text="Major:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/spinner"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sp_v_details_major"
+        app:layout_constraintEnd_toStartOf="@+id/sp_v_details_major"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -81,11 +81,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:text="Email:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_addStudent_email"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_v_add_email"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_v_addStudent_fname"
+        android:id="@+id/et_v_add_fname"
         android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginTop="28dp"
@@ -94,12 +94,12 @@
         android:inputType="text"
         android:text="fname"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="@+id/et_v_addStudent_lname"
+        app:layout_constraintEnd_toEndOf="@+id/et_v_add_lname"
         app:layout_constraintStart_toStartOf="@+id/tv_v_details_id"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/et_v_addStudent_lname"
+        android:id="@+id/et_v_add_lname"
         android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginTop="105dp"
@@ -108,12 +108,12 @@
         android:inputType="text"
         android:text="lname"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/et_v_addStudent_email"
-        app:layout_constraintStart_toStartOf="@+id/et_v_addStudent_email"
+        app:layout_constraintEnd_toEndOf="@+id/et_v_add_email"
+        app:layout_constraintStart_toStartOf="@+id/et_v_add_email"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_v_addStudent_email"
+        android:id="@+id/et_v_add_email"
         android:layout_width="311dp"
         android:layout_height="53dp"
         android:layout_marginTop="138dp"
@@ -121,13 +121,13 @@
         android:ems="10"
         android:inputType="text"
         android:text="email"
-        app:layout_constraintBottom_toBottomOf="@+id/et_v_addStudent_gpa"
-        app:layout_constraintEnd_toEndOf="@+id/et_v_addStudent_age"
-        app:layout_constraintStart_toStartOf="@+id/et_v_addStudent_age"
+        app:layout_constraintBottom_toBottomOf="@+id/et_v_add_gpa"
+        app:layout_constraintEnd_toEndOf="@+id/et_v_add_age"
+        app:layout_constraintStart_toStartOf="@+id/et_v_add_age"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/et_v_addStudent_age"
+        android:id="@+id/et_v_add_age"
         android:layout_width="306dp"
         android:layout_height="44dp"
         android:layout_marginTop="68dp"
@@ -135,13 +135,13 @@
         android:ems="10"
         android:inputType="text"
         android:text="age"
-        app:layout_constraintBottom_toBottomOf="@+id/et_v_addStudent_gpa"
-        app:layout_constraintEnd_toEndOf="@+id/et_v_addStudent_gpa"
-        app:layout_constraintStart_toStartOf="@+id/et_v_addStudent_gpa"
-        app:layout_constraintTop_toTopOf="@+id/et_v_addStudent_email" />
+        app:layout_constraintBottom_toBottomOf="@+id/et_v_add_gpa"
+        app:layout_constraintEnd_toEndOf="@+id/et_v_add_gpa"
+        app:layout_constraintStart_toStartOf="@+id/et_v_add_gpa"
+        app:layout_constraintTop_toTopOf="@+id/et_v_add_email" />
 
     <EditText
-        android:id="@+id/et_v_addStudent_gpa"
+        android:id="@+id/et_v_add_gpa"
         android:layout_width="292dp"
         android:layout_height="53dp"
         android:layout_marginEnd="16dp"
@@ -149,11 +149,11 @@
         android:ems="10"
         android:inputType="text"
         android:text="GPA"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintBottom_toTopOf="@+id/sp_v_details_major"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btn_v_details_back"
+        android:id="@+id/btn_v_add_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -163,7 +163,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_v_details_update"
+        android:id="@+id/btn_v_add_addStudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
@@ -173,7 +173,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/sp_v_details_major"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginEnd="1dp"

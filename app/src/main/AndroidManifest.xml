@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CIS183_HW03_Granger">
         <activity
+            android:name=".SearchPage"
+            android:exported="false" />
+        <activity
+            android:name=".AddMajorPage"
+            android:exported="false" />
+        <activity
             android:name=".AddStudentPage"
             android:exported="false" />
         <activity

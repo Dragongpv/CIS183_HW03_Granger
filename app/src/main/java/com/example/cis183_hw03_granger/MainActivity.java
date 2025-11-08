@@ -50,6 +50,38 @@ public class MainActivity extends AppCompatActivity {
         fillListView();
 
         setListClickListener();
+        setButtonClickListeners();
+
+
+    }
+
+    private void setButtonClickListeners()
+    {
+        btn_j_addMajor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(MainActivity.this, AddMajorPage.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_j_addStudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(MainActivity.this, AddStudentPage.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_j_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(MainActivity.this, SearchPage.class));
+            }
+        });
 
 
     }
@@ -66,6 +98,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        lv_j_studentList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                StudentInfo clickedStudent = (StudentInfo) parent.getItemAtPosition(position);
+
+                dbHelper.deleteStudent(clickedStudent.getId());
+                studentlist.remove(position);
+                adapter.notifyDataSetChanged();
+
+                return true;
+
+            }
+        });
+
+
 
     }
 

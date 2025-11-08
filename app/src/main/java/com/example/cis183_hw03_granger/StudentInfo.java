@@ -51,7 +51,7 @@ public class StudentInfo
     }
 
     public void setId(String id) {
-        this.username = username;
+        this.username = id;
     }
 
     public String getEmail() {
